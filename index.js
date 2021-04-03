@@ -27,6 +27,8 @@ const get = (username, size) => {
 };
 
 app.get("/:user", async (req, res, next) => {
+  console.log(`logging for ${req.params.user}`);
+  console.log(get);
   const result = await get(req.params.user, "_200x200");
   if (!result) return res.status(404).send('Not Found');
   request(result).pipe(res);
